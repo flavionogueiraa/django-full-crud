@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: django-full-crud
-Version: 0.2.3
+Version: 0.2.4
 Summary: Django Full CRUD
 Home-page: https://github.com/flaviotech/django-full-crud/
 Author: Flávio Silva
@@ -11,6 +11,14 @@ Keywords: Django,CRUD
 Platform: UNKNOWN
 Description-Content-Type: text/markdown
 License-File: LICENSE
+
+Teste de palavras em português:
+Você
+Criação
+Apresentação
+Instalação
+Flávio
+Antônio
 
 # Django full crud!
 This package is for you to create a fully automatic CRUD of your models.

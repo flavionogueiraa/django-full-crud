@@ -1,3 +1,11 @@
+Teste de palavras em português:
+Você
+Criação
+Apresentação
+Instalação
+Flávio
+Antônio
+
 # Django full crud!
 This package is for you to create a fully automatic CRUD of your models.
 
