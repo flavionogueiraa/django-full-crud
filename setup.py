@@ -5,8 +5,8 @@ with open("README.md", "r") as file:
 
 setup(
     name="django_full_crud",
-    version="0.0.24",
-    # url="https://github.com/caiocarneloz/pacotepypi",
+    version="0.2.3",
+    url="https://github.com/flaviotech/django-full-crud/",
     license="MIT License",
     author="Flávio Silva",
     long_description=readme,
@@ -16,4 +16,7 @@ setup(
     description="Django Full CRUD",
     packages=find_packages(),
     install_requires=["django"],
+    project_urls={
+        "GitHub": "https://github.com/flaviotech/django-full-crud/",
+    }
 )

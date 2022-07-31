@@ -1,68 +1,78 @@
 Metadata-Version: 2.1
 Name: django-full-crud
-Version: 0.0.24
+Version: 0.2.3
 Summary: Django Full CRUD
-Home-page: UNKNOWN
+Home-page: https://github.com/flaviotech/django-full-crud/
 Author: Flávio Silva
 Author-email: flavio.nogueira.profissional@gmail.com
 License: MIT License
+Project-URL: GitHub, https://github.com/flaviotech/django-full-crud/
 Keywords: Django,CRUD
 Platform: UNKNOWN
 Description-Content-Type: text/markdown
 License-File: LICENSE
 
 # Django full crud!
-Esse pacote serve para vocÃª criar um CRUD das suas models de forma que os arquvos sejam criados automaticamente.
+This package is for you to create a fully automatic CRUD of your models.
 
-## InstalaÃ§Ã£o
+## Dependencies
+Django
+
+## Installation
 ```shell
 pip install django-full-crud
 ```
 
-## DependÃªncias
-Django
+Add the following in settings.py:
+```python
+INSTALLED_APPS = [
+    ...
+    'django_full_crud',
+    ...
+]
+```
 
-## Principais funcionalidades
-- CriaÃ§Ã£o do arquivo admin
-- CriaÃ§Ã£o do arquivo de forms
-- CriaÃ§Ã£o dos templates (delete, detail, form e list)
-- CriaÃ§Ã£o dos views (create, delete, detail, list e update)
-- CriaÃ§Ã£o dos paths presentes no urls.py
-- CriaÃ§Ã£o dos arquivos inits das pastas
+## Features
+- Creation the admin file
+- Creation the form file
+- Creation the templates (delete, detail, form and list)
+- Creation the views (create, delete, detail, list and update)
+- Creation of paths present in urls.py.
+- Creation the init files.
 
-## RecomendaÃ§Ãµes
-Criar suas apps com a estrutura fornecida por esse [modelo de app](https://github.com/TimeNovaData/django_app_modelo)
+## Recommendations
+Build your apps using this [app template](https://github.com/TimeNovaData/django_app_modelo)
 
 
-## Modo de uso
-Crie um arquivo .vscode na raiz do seu projeto, depois adicione um arquivo chamado django_full_crud.json.
+## Getting start
+Create a .vscode file at the root of your project, then add a file called "django_full_crud.json". 
 
-Adicione o seguinte conteudo no mesmo:
+Add the following to it:
 ```json
 {
-    "project_name": "nome_do_seu_projeto"
+    "project_name": "name_of_your_project"
 }
 ```
 
-Depois disso vocÃª precisa criar suas models dentro da pasta models e adiciona-las no init.py.
-As seguintes variaÃ§Ãµes de comandos podem ser executadas no terminal:
+After that in need to create your models and add them to init.py.
+The following commands can be run in the terminal:
 
 ---
 ```shell
 python manage.py full_crud nome_app NomeModel
 ```
-O full crud Ã© executado em cima da model especificada
+The full_crud runs on the specified model.
 
 ---
 ```shell
 python manage.py full_crud nome_app
 ```
-O full crud Ã© executado em cima da app especificada
+The full_crud runs ont the specified app.
 
 ---
 ```shell
 python manage.py full_crud
 ```
-O full crud Ã© executado em cima do projeto inteiro
+The full_crud runs on the project.
 
 

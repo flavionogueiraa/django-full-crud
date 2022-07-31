@@ -1,53 +1,62 @@
 # Django full crud!
-Esse pacote serve para você criar um CRUD das suas models de forma que os arquvos sejam criados automaticamente.
+This package is for you to create a fully automatic CRUD of your models.
 
-## Instalação
+## Dependencies
+Django
+
+## Installation
 ```shell
 pip install django-full-crud
 ```
 
-## Dependências
-Django
+Add the following in settings.py:
+```python
+INSTALLED_APPS = [
+    ...
+    'django_full_crud',
+    ...
+]
+```
 
-## Principais funcionalidades
-- Criação do arquivo admin
-- Criação do arquivo de forms
-- Criação dos templates (delete, detail, form e list)
-- Criação dos views (create, delete, detail, list e update)
-- Criação dos paths presentes no urls.py
-- Criação dos arquivos inits das pastas
+## Features
+- Creation the admin file
+- Creation the form file
+- Creation the templates (delete, detail, form and list)
+- Creation the views (create, delete, detail, list and update)
+- Creation of paths present in urls.py.
+- Creation the init files.
 
-## Recomendações
-Criar suas apps com a estrutura fornecida por esse [modelo de app](https://github.com/TimeNovaData/django_app_modelo)
+## Recommendations
+Build your apps using this [app template](https://github.com/TimeNovaData/django_app_modelo)
 
 
-## Modo de uso
-Crie um arquivo .vscode na raiz do seu projeto, depois adicione um arquivo chamado django_full_crud.json.
+## Getting start
+Create a .vscode file at the root of your project, then add a file called "django_full_crud.json". 
 
-Adicione o seguinte conteudo no mesmo:
+Add the following to it:
 ```json
 {
-    "project_name": "nome_do_seu_projeto"
+    "project_name": "name_of_your_project"
 }
 ```
 
-Depois disso você precisa criar suas models dentro da pasta models e adiciona-las no init.py.
-As seguintes variações de comandos podem ser executadas no terminal:
+After that in need to create your models and add them to init.py.
+The following commands can be run in the terminal:
 
 ---
 ```shell
 python manage.py full_crud nome_app NomeModel
 ```
-O full crud é executado em cima da model especificada
+The full_crud runs on the specified model.
 
 ---
 ```shell
 python manage.py full_crud nome_app
 ```
-O full crud é executado em cima da app especificada
+The full_crud runs ont the specified app.
 
 ---
 ```shell
 python manage.py full_crud
 ```
-O full crud é executado em cima do projeto inteiro
+The full_crud runs on the project.
