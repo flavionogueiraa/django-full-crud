@@ -1,11 +1,12 @@
 Metadata-Version: 2.1
 Name: django-full-crud
-Version: 0.2
+Version: 0.2.1
 Summary: Django Full CRUD
 Home-page: https://github.com/flaviotech/django-full-crud/
 Author: Flávio Silva
 Author-email: flavio.nogueira.profissional@gmail.com
 License: MIT License
+Project-URL: GitHub, https://github.com/flaviotech/django-full-crud/
 Keywords: Django,CRUD
 Platform: UNKNOWN
 Description-Content-Type: text/markdown

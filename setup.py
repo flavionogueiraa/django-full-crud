@@ -5,7 +5,7 @@ with open("README.md", "r") as file:
 
 setup(
     name="django_full_crud",
-    version="0.2",
+    version="0.2.1",
     url="https://github.com/flaviotech/django-full-crud/",
     license="MIT License",
     author="Flávio Silva",
@@ -16,4 +16,7 @@ setup(
     description="Django Full CRUD",
     packages=find_packages(),
     install_requires=["django"],
+    project_urls={
+        "GitHub": "https://github.com/flaviotech/django-full-crud/",
+    }
 )
