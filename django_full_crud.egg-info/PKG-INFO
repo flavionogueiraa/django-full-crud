@@ -1,0 +1,68 @@
+Metadata-Version: 2.1
+Name: django-full-crud
+Version: 0.0.24
+Summary: Django Full CRUD
+Home-page: UNKNOWN
+Author: Flávio Silva
+Author-email: flavio.nogueira.profissional@gmail.com
+License: MIT License
+Keywords: Django,CRUD
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Django full crud!
+Esse pacote serve para vocÃª criar um CRUD das suas models de forma que os arquvos sejam criados automaticamente.
+
+## InstalaÃ§Ã£o
+```shell
+pip install django-full-crud
+```
+
+## DependÃªncias
+Django
+
+## Principais funcionalidades
+- CriaÃ§Ã£o do arquivo admin
+- CriaÃ§Ã£o do arquivo de forms
+- CriaÃ§Ã£o dos templates (delete, detail, form e list)
+- CriaÃ§Ã£o dos views (create, delete, detail, list e update)
+- CriaÃ§Ã£o dos paths presentes no urls.py
+- CriaÃ§Ã£o dos arquivos inits das pastas
+
+## RecomendaÃ§Ãµes
+Criar suas apps com a estrutura fornecida por esse [modelo de app](https://github.com/TimeNovaData/django_app_modelo)
+
+
+## Modo de uso
+Crie um arquivo .vscode na raiz do seu projeto, depois adicione um arquivo chamado django_full_crud.json.
+
+Adicione o seguinte conteudo no mesmo:
+```json
+{
+    "project_name": "nome_do_seu_projeto"
+}
+```
+
+Depois disso vocÃª precisa criar suas models dentro da pasta models e adiciona-las no init.py.
+As seguintes variaÃ§Ãµes de comandos podem ser executadas no terminal:
+
+---
+```shell
+python manage.py full_crud nome_app NomeModel
+```
+O full crud Ã© executado em cima da model especificada
+
+---
+```shell
+python manage.py full_crud nome_app
+```
+O full crud Ã© executado em cima da app especificada
+
+---
+```shell
+python manage.py full_crud
+```
+O full crud Ã© executado em cima do projeto inteiro
+
+
