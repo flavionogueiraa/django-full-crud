@@ -100,7 +100,7 @@ def get_class_function_name(module):
         return replaced_module(module["module"])
 
     path = module["module"]
-    with open(path, "r") as file:
+    with open(path, "r", encoding="utf-8") as file:
         lines = file.readlines()
         right_line = list(filter(starts_with_class_or_def, lines))[0]
         class_function_name = make_splits_line(right_line)

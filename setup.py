@@ -1,11 +1,11 @@
 from setuptools import find_packages, setup
 
-with open("README.md", "r") as file:
+with open("README.md", "r", encoding="utf-8") as file:
     readme = file.read()
 
 setup(
     name="django_full_crud",
-    version="0.2.3",
+    version="0.2.5",
     url="https://github.com/flaviotech/django-full-crud/",
     license="MIT License",
     author="Flávio Silva",
