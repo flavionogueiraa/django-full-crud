@@ -23,7 +23,7 @@ def get_project_name():
 
     try:
         return get_django_full_crud_json(path)
-    finally:
+    except:
         raise (Exception("Arquivo django_full_crud.json não encontrado, por favor, verifique a seção 'Modo de uso' da documentação"))
 
 def get_django_full_crud_json(path):
