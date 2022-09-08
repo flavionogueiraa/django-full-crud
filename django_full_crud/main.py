@@ -1,6 +1,7 @@
 import os
 import sys
 from importlib import import_module
+from xml.dom import NotFoundErr
 
 import django
 from dj_static import Cling
@@ -78,7 +79,7 @@ def execute(app_name, models):
         )
 
         if not model_exists:
-            raise (Exception(f"A model {model} não existente"))
+            raise NotFoundErr(f"A model {model} não existente")
 
         check_and_create_folders(app_name, snake_model_name)
 

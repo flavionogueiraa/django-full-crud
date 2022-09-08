@@ -1,6 +1,7 @@
-from pathlib import Path
-import os
 import json
+import os
+from pathlib import Path
+from xml.dom import NotFoundErr
 
 
 def update_current_app(app_name):
@@ -18,8 +19,8 @@ def get_project_name():
         with open(path) as settings:
             dict_json = json.load(settings)
             return dict_json.get("project_name", None)
-    except:
-        raise (Exception("Arquivo django_full_crud.json não encontrado, por favor, verifique a seção 'Modo de uso' da documentação"))
+    except NotFoundErr():
+        raise (NotFoundErr("Arquivo django_full_crud.json não encontrado, por favor, verifique a seção 'Modo de uso' da documentação"))
 
 
 def get_project_dir(string=""):

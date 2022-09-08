@@ -13,7 +13,7 @@ def format_parameter(parameter):
 
 def get_init_list(app_name, folder):
     dict_param = {}
-    if not "\\" in folder:
+    if "\\" not in folder:
         all_modules = getattr(import_module(f"{app_name}.{folder}"), "__all__")
         for module in all_modules:
             module_name = module.__name__
