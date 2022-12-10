@@ -70,23 +70,21 @@ By default the values are true, but you can change them in the django_full_crud.
 ```json
 {
     "project_name": "name_of_your_project",
-    "extra_config": {
-        "make_admins": false,
-        "make_admins_init": false,
-        // 
-        "make_forms": false,
-        "make_forms_init": false,
-        // 
-        "make_serializers": false,
-        "make_serializers_init": false,
-        // 
-        "make_templates": false,
-        // 
-        "make_views": false,
-        "make_views_init": false,
-        // 
-        "make_viewsets": false,
-        "make_viewsets_init": false
-    }
+    "make_admins": false,
+    "make_admins_init": false,
+    // 
+    "make_forms": false,
+    "make_forms_init": false,
+    // 
+    "make_serializers": false,
+    "make_serializers_init": false,
+    // 
+    "make_templates": false,
+    // 
+    "make_views": false,
+    "make_views_init": false,
+    // 
+    "make_viewsets": false,
+    "make_viewsets_init": false
 }
 ```
