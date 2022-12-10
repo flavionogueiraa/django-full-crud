@@ -1,4 +1,5 @@
 from .admin_script import admin_script
+from .blank_init_script import blank_init_script
 from .create_view_script import create_view_script
 from .delete_template_script import delete_template_script
 from .delete_view_script import delete_view_script
@@ -18,6 +19,7 @@ from .viewset_script import viewset_script
 
 __all__ = [
     admin_script,
+    blank_init_script,
     create_view_script,
     delete_template_script,
     delete_view_script,
