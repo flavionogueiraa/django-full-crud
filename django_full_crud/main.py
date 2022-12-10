@@ -5,18 +5,25 @@ from importlib import import_module
 import django
 from dj_static import Cling
 from django.core.wsgi import get_wsgi_application
-
 from django_full_crud.admin.main import create_admin_files
 from django_full_crud.forms.main import create_forms_files
-from django_full_crud.globals import PROJECT_NAME, base_dir, get_project_dir
+from django_full_crud.globals import (
+    PROJECT_NAME,
+    base_dir,
+    get_django_full_crud_json,
+    get_project_dir,
+)
+from django_full_crud.serializers.main import create_serializers_files
 from django_full_crud.templates.main import create_templates_files
-from django_full_crud.urls.main import create_urls_files
+
+# from django_full_crud.urls.main import create_urls_files
 from django_full_crud.utils import (
     camel_to_snake_case,
     check_and_create_folders,
     get_modules,
 )
 from django_full_crud.views.main import create_views_files
+from django_full_crud.viewsets.main import create_viewsets_files
 
 
 def make_initial_configs():
@@ -26,6 +33,7 @@ def make_initial_configs():
     Cling(get_wsgi_application())
 
     django.setup()
+
 
 def get_app_models(app_name):
     models = []
@@ -84,8 +92,10 @@ def execute(app_name, models):
 
         create_admin_files(app_name, snake_model_name, model)
         create_forms_files(app_name, snake_model_name, model)
+        create_serializers_files(app_name, snake_model_name, model)
         create_templates_files(app_name, snake_model_name, model)
         create_views_files(app_name, snake_model_name, model)
+        create_viewsets_files(app_name, snake_model_name, model)
 
 
 def full_crud(app_name=None, model_name=None):
@@ -94,11 +104,15 @@ def full_crud(app_name=None, model_name=None):
     if model_name:
         models = [model_name]
         execute(app_name, models)
-        create_urls_files(app_name)
+        # Disabled in 10/12/2022.
+        # É muito específico, então a chance de usarmos é baixa
+        # create_urls_files(app_name)
     elif app_name:
         models = get_app_models(app_name)
         execute(app_name, models)
-        create_urls_files(app_name)
+        # Disabled in 10/12/2022.
+        # É muito específico, então a chance de usarmos é baixa
+        # create_urls_files(app_name)
     else:
         modules = get_modules(get_project_dir())
         only_folders = get_only_folders(modules)
@@ -107,11 +121,15 @@ def full_crud(app_name=None, model_name=None):
         for module in only_apps:
             models_folder = import_module(f"{module['module_name']}.models")
             models_from_this_app = getattr(models_folder, "__all__")
-            models_name = list(map(lambda model: model.__name__, models_from_this_app))
+            models_name = list(
+                map(lambda model: model.__name__, models_from_this_app)
+            )
 
             this_app = module["module_name"]
             execute(this_app, models_name)
-            create_urls_files(this_app)
+            # Disabled in 10/12/2022.
+            # É muito específico, então a chance de usarmos é baixa
+            # create_urls_files(this_app)
 
 
 functions = {

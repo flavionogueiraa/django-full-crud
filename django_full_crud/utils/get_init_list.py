@@ -1,8 +1,7 @@
 import inspect
 from importlib import import_module
 
-from django_full_crud.globals import get_project_dir
-
+from django_full_crud.globals import BAR, get_project_dir
 from django_full_crud.utils.get_modules import get_modules
 from django_full_crud.utils.replaced_module import replaced_module
 
@@ -13,9 +12,12 @@ def format_parameter(parameter):
 
 def get_init_list(app_name, folder):
     dict_param = {}
-    if not "\\" in folder:
+    if not BAR in folder:
         all_modules = getattr(import_module(f"{app_name}.{folder}"), "__all__")
-        for module in all_modules:
+        only_has_name = list(
+            filter(lambda module: hasattr(module, "__name__"), all_modules)
+        )
+        for module in only_has_name:
             module_name = module.__name__
             inspect_module = inspect.signature(module)
             parameters = list(inspect_module.parameters.values())
@@ -27,7 +29,7 @@ def get_init_list(app_name, folder):
                         formated_parameter[0]: formated_parameter[1]
                     }
 
-    directory = get_project_dir(f"{app_name}\\{folder}")
+    directory = get_project_dir(f"{app_name}{BAR}{folder}")
     modules = get_modules(directory)
 
     init_list = [
@@ -57,7 +59,8 @@ def make_init_object(module, dict_param):
         "parameters": dict_param.get(module_name, {}),
         "folder": module["folder"],
         "childrens": [
-            make_init_object(children, dict_param) for children in module["childrens"]
+            make_init_object(children, dict_param)
+            for children in module["childrens"]
         ],
     }
 
@@ -67,7 +70,7 @@ def check_admin_path_exists(app_name, init):
 
     from globals.main import get_project_dir
 
-    admin_file_path = f"{app_name}\\admin\\{init['archive_name']}.py"
+    admin_file_path = f"{app_name}{BAR}admin{BAR}{init['archive_name']}.py"
     path_exists = os.path.exists(get_project_dir(admin_file_path))
 
     return path_exists
@@ -78,7 +81,7 @@ def check_form_path_exists(app_name, init):
 
     from globals.main import get_project_dir
 
-    form_file_path = f"{app_name}\\forms\\{init['archive_name']}.py"
+    form_file_path = f"{app_name}{BAR}forms{BAR}{init['archive_name']}.py"
     path_exists = os.path.exists(get_project_dir(form_file_path))
 
     return path_exists
@@ -89,7 +92,7 @@ def check_views_path_exists(app_name, init):
 
     from globals.main import get_project_dir
 
-    file_path = f"{app_name}\\views\\{init['archive_name']}.py"
+    file_path = f"{app_name}{BAR}views{BAR}{init['archive_name']}.py"
     path_exists = os.path.exists(get_project_dir(file_path))
 
     return path_exists
