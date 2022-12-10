@@ -16,6 +16,17 @@ def base_dir(name=None):
 
 
 def get_project_name():
+    try:
+        return get_django_full_crud_json("project_name")
+    except:
+        raise (
+            Exception(
+                "Arquivo django_full_crud.json não encontrado, por favor, verifique a seção 'Modo de uso' da documentação"
+            )
+        )
+
+
+def get_django_full_crud_json(key):
     windows_path = os.path.join(
         PROJECT_BASE_DIR, ".vscode", "django_full_crud.json"
     )
@@ -28,20 +39,9 @@ def get_project_name():
     else:
         path = linux_path
 
-    try:
-        return get_django_full_crud_json(path)
-    except:
-        raise (
-            Exception(
-                "Arquivo django_full_crud.json não encontrado, por favor, verifique a seção 'Modo de uso' da documentação"
-            )
-        )
-
-
-def get_django_full_crud_json(path):
     with open(path, encoding="utf-8") as settings:
         dict_json = json.load(settings)
-        return dict_json.get("project_name", None)
+        return dict_json.get(key, None)
 
 
 def get_project_dir(string=""):
