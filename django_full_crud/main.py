@@ -94,11 +94,25 @@ def execute(app_name, models):
             app_name, snake_model_name, model
         ) if get_django_full_crud_json("make_admin") else None
 
-        create_forms_files(app_name, snake_model_name, model)
-        create_templates_files(app_name, snake_model_name, model)
-        create_views_files(app_name, snake_model_name, model)
-        create_serializers_files(app_name, snake_model_name, model)
-        create_viewsets_files(app_name, snake_model_name, model)
+        create_forms_files(
+            app_name, snake_model_name, model
+        ) if get_django_full_crud_json("make_forms") else None
+
+        create_templates_files(
+            app_name, snake_model_name, model
+        ) if get_django_full_crud_json("make_templates") else None
+
+        create_views_files(
+            app_name, snake_model_name, model
+        ) if get_django_full_crud_json("make_views") else None
+
+        create_serializers_files(
+            app_name, snake_model_name, model
+        ) if get_django_full_crud_json("make_serializers") else None
+
+        create_viewsets_files(
+            app_name, snake_model_name, model
+        ) if get_django_full_crud_json("make_viewsets") else None
 
 
 def full_crud(app_name=None, model_name=None):
