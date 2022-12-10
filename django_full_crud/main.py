@@ -98,6 +98,10 @@ def execute(app_name, models):
             app_name, snake_model_name, model
         ) if get_django_full_crud_json("make_forms") else None
 
+        create_serializers_files(
+            app_name, snake_model_name, model
+        ) if get_django_full_crud_json("make_serializers") else None
+
         create_templates_files(
             app_name, snake_model_name, model
         ) if get_django_full_crud_json("make_templates") else None
@@ -105,10 +109,6 @@ def execute(app_name, models):
         create_views_files(
             app_name, snake_model_name, model
         ) if get_django_full_crud_json("make_views") else None
-
-        create_serializers_files(
-            app_name, snake_model_name, model
-        ) if get_django_full_crud_json("make_serializers") else None
 
         create_viewsets_files(
             app_name, snake_model_name, model
