@@ -17,6 +17,7 @@ from django_full_crud.utils import (
     get_modules,
 )
 from django_full_crud.views.main import create_views_files
+from django_full_crud.viewsets.main import create_viewsets_files
 
 
 def make_initial_configs():
@@ -88,6 +89,7 @@ def execute(app_name, models):
         create_templates_files(app_name, snake_model_name, model)
         create_views_files(app_name, snake_model_name, model)
         create_serializers_files(app_name, snake_model_name, model)
+        create_viewsets_files(app_name, snake_model_name, model)
 
 
 def full_crud(app_name=None, model_name=None):

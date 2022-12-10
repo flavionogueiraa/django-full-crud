@@ -8,5 +8,4 @@ class {model_name}Serializer(serializers.ModelSerializer):
     class Meta:
         model = {model_name}
         fields = "__all__"
-
 """

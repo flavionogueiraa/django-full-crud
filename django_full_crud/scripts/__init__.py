@@ -14,6 +14,7 @@ from .list_view_script import list_view_script
 from .serializer_script import serializer_script
 from .update_view_script import update_view_script
 from .urls_script import urls_script
+from .viewset_script import viewset_script
 
 __all__ = [
     admin_script,
@@ -32,4 +33,5 @@ __all__ = [
     serializer_script,
     update_view_script,
     urls_script,
+    viewset_script,
 ]
