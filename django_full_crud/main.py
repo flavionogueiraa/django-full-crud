@@ -8,6 +8,7 @@ from django.core.wsgi import get_wsgi_application
 from django_full_crud.admin.main import create_admin_files
 from django_full_crud.forms.main import create_forms_files
 from django_full_crud.globals import PROJECT_NAME, base_dir, get_project_dir
+from django_full_crud.serializers.main import create_serializers_files
 from django_full_crud.templates.main import create_templates_files
 from django_full_crud.urls.main import create_urls_files
 from django_full_crud.utils import (
@@ -86,6 +87,7 @@ def execute(app_name, models):
         create_forms_files(app_name, snake_model_name, model)
         create_templates_files(app_name, snake_model_name, model)
         create_views_files(app_name, snake_model_name, model)
+        create_serializers_files(app_name, snake_model_name, model)
 
 
 def full_crud(app_name=None, model_name=None):
