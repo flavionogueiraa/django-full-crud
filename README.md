@@ -24,7 +24,6 @@ INSTALLED_APPS = [
 - Creation the templates (delete, detail, form and list).
 - Creation the serializer.
 - Creation the views (create, delete, detail, list and update).
-<!-- - Creation of paths present in urls.py. -->
 - Creation the viewsets.
 - Creation the init files.
 
