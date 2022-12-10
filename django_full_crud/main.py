@@ -5,7 +5,6 @@ from importlib import import_module
 import django
 from dj_static import Cling
 from django.core.wsgi import get_wsgi_application
-
 from django_full_crud.admin.main import create_admin_files
 from django_full_crud.forms.main import create_forms_files
 from django_full_crud.globals import PROJECT_NAME, base_dir, get_project_dir
@@ -26,6 +25,7 @@ def make_initial_configs():
     Cling(get_wsgi_application())
 
     django.setup()
+
 
 def get_app_models(app_name):
     models = []
@@ -107,7 +107,9 @@ def full_crud(app_name=None, model_name=None):
         for module in only_apps:
             models_folder = import_module(f"{module['module_name']}.models")
             models_from_this_app = getattr(models_folder, "__all__")
-            models_name = list(map(lambda model: model.__name__, models_from_this_app))
+            models_name = list(
+                map(lambda model: model.__name__, models_from_this_app)
+            )
 
             this_app = module["module_name"]
             execute(this_app, models_name)

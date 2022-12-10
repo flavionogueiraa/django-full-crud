@@ -60,4 +60,6 @@ PROJECT_BASE_DIR = (
 
 PROJECT_NAME = get_project_name()
 
+BAR = "\\" if so == "Windows" else "/"
+
 get_project_dir()
