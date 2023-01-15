@@ -8,6 +8,8 @@ from django_full_crud.globals import (
 
 def create_views_files(app_name, snake_model_name, model_name):
     if get_django_full_crud_json("make_views"):
+        print("Creating view files...")
+
         view_path = f"{get_project_dir(app_name)}/views/"
         model_path = view_path + f"{snake_model_name}/"
 
@@ -59,3 +61,8 @@ def create_views_files(app_name, snake_model_name, model_name):
             normal_init = scripts.init_script(app_name, "views")
             with open(f"{view_path}/__init__.py", "w", encoding="utf-8") as init:
                 init.write(normal_init)
+
+        print("View files created successfully!\n")
+    else:
+        print("Skipping view files...")
+        print("Successfully skipped view files!\n")
