@@ -6,7 +6,7 @@ def create_serializers_files(app_name, snake_model_name, model_name):
     if get_django_full_crud_json("make_serializers"):
         print("Creating serializer files...")
 
-        serializer_script = scripts.serializer_script(model_name)
+        serializer_script = scripts.serializer_script(app_name, snake_model_name, model_name)
         with open(f"{get_project_dir(app_name)}/serializers/{snake_model_name}_serializer.py", "w", encoding="utf-8") as serializer:
             serializer.write(serializer_script)
 
