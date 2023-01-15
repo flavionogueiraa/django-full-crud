@@ -50,7 +50,6 @@ def write_files_path(script, view_only_files):
 
 def write_routers(script, app_name, viewset_only_files):
     router_name = f"{app_name}_router"
-    print(viewset_only_files)
     for file in viewset_only_files:
         name = file["class_function_name"]
         name_without_suffix = name.replace("ViewSet", "")
