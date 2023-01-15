@@ -3,6 +3,7 @@ This package is for you to create a fully automatic CRUD of your models.
 
 ## Dependencies
 Django
+Build your apps using this [app template](https://github.com/TimeNovaData/django_app_modelo).
 
 ## Installation
 ```shell
@@ -28,8 +29,7 @@ INSTALLED_APPS = [
 - Creation the init files.
 
 ## Recommendations
-Build your apps using this [app template](https://github.com/TimeNovaData/django_app_modelo).
-
+Do not make your init files with strings, the package will not find your models.
 
 ## Getting start
 Create a .vscode file at the root of your project, then add a file called "django_full_crud.json". 
