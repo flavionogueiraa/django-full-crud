@@ -15,8 +15,7 @@ from django_full_crud.globals import (
 )
 from django_full_crud.serializers.main import create_serializers_files
 from django_full_crud.templates.main import create_templates_files
-
-# from django_full_crud.urls.main import create_urls_files
+from django_full_crud.urls.main import create_urls_files
 from django_full_crud.utils import (
     camel_to_snake_case,
     check_and_create_folders,
@@ -98,6 +97,7 @@ def execute(app_name, models):
         create_templates_files(app_name, snake_model_name, model)
         create_views_files(app_name, snake_model_name, model)
         create_viewsets_files(app_name, snake_model_name, model)
+        create_urls_files(app_name)
 
 
 def full_crud(app_name=None, model_name=None):
@@ -108,17 +108,11 @@ def full_crud(app_name=None, model_name=None):
         print("Executing only one model...")
         models = [model_name]
         execute(app_name, models)
-        # Disabled in 10/12/2022.
-        # É muito específico, então a chance de usarmos é baixa
-        # create_urls_files(app_name)
     elif app_name:
         print("Executing only one app...")
         models = get_app_models(app_name)
 
         execute(app_name, models)
-        # Disabled in 10/12/2022.
-        # É muito específico, então a chance de usarmos é baixa
-        # create_urls_files(app_name)
     else:
         print("Executing all project...")
         modules = get_modules(get_project_dir())
@@ -134,8 +128,5 @@ def full_crud(app_name=None, model_name=None):
 
             this_app = module["module_name"]
             execute(this_app, models_name)
-            # Disabled in 10/12/2022.
-            # É muito específico, então a chance de usarmos é baixa
-            # create_urls_files(this_app)
 
     print("\nFinished django-full-crud!")
