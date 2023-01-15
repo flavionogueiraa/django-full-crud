@@ -3,39 +3,44 @@ import django_full_crud.utils as utils
 from .init_script import get_only_files, get_only_folders
 
 
-def urls_script(app_name, init_list):
-    only_files = get_only_files(init_list)
-    only_folders = get_only_folders(init_list)
+def urls_script(app_name, init_list, viewset_init_list):
+    view_only_files = get_only_files(init_list)
+    view_only_folders = get_only_folders(init_list)
+    viewset_only_files = get_only_files(viewset_init_list)
 
-    script = write_imports(app_name)
-    script = write_folder_pattenrs(script, only_folders)
-    script += f"urlpatterns = (\n\t["
+    script = write_imports_and_app_router(app_name)
+    script = write_routers(script, app_name, viewset_only_files)
+    script = write_folder_pattenrs(script, view_only_folders)
+    script += f"""urlpatterns = (\n\t[
+        path("api/", include({app_name}_router.urls)),"""
 
-    script = write_files_path(script, only_files)
+    script = write_files_path(script, view_only_files)
     script += "\n\t]"
 
-    script = write_sum_folders_patterns(script, only_folders)
+    script = write_sum_folders_patterns(script, view_only_folders)
     script += "\n)\n"
 
     return script
 
 
-def write_imports(app_name):
-    return f"""from django.urls import path
+def write_imports_and_app_router(app_name):
+    return f"""from django.urls import include, path
+from rest_framework import routers
 
-from {app_name} import views
+from {app_name} import views, viewsets
 
+{app_name}_router = routers.DefaultRouter()
 """
 
 
-def write_sum_folders_patterns(script, only_folders):
-    for folder in only_folders:
+def write_sum_folders_patterns(script, view_only_folders):
+    for folder in view_only_folders:
         script += f"\n\t+ {folder['class_function_name']}_patterns"
     return script
 
 
-def write_files_path(script, only_files):
-    for file in only_files:
+def write_files_path(script, view_only_files):
+    for file in view_only_files:
         name = file["class_function_name"]
         kebab_case = to_kebab_case(name)
         snake_case = utils.camel_to_snake_case(name)
@@ -43,8 +48,20 @@ def write_files_path(script, only_files):
     return script
 
 
-def write_folder_pattenrs(script, only_folders):
-    for folder in only_folders:
+def write_routers(script, app_name, viewset_only_files):
+    router_name = f"{app_name}_router"
+    print(viewset_only_files)
+    for file in viewset_only_files:
+        name = file["class_function_name"]
+        name_without_suffix = name.replace("ViewSet", "")
+        kebab_case = to_kebab_case(name_without_suffix)
+        snake_case = utils.camel_to_snake_case(name_without_suffix)
+        script += f"""{router_name}.register("{kebab_case}", viewsets.{name}, basename="{snake_case}")\n\n"""
+    return script
+
+
+def write_folder_pattenrs(script, view_only_folders):
+    for folder in view_only_folders:
         script += f"{folder['class_function_name']}_patterns = ["
         for children in folder["childrens"]:
             children_name = children.get("class_function_name")
