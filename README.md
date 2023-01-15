@@ -30,6 +30,7 @@ INSTALLED_APPS = [
 
 ## Recommendations
 Do not make your init files with strings, the package will not find your models.
+Make a single file for each class, and import them in the init file.
 
 ## Getting start
 Create a .vscode file at the root of your project, then add a file called "django_full_crud.json". 
