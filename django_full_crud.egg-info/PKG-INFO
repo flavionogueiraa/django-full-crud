@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: django-full-crud
-Version: 0.2.8
+Version: 0.2.8.1
 Summary: Django Full CRUD
 Home-page: https://github.com/flaviotech/django-full-crud/
 Author: Flávio Silva
@@ -17,6 +17,7 @@ This package is for you to create a fully automatic CRUD of your models.
 
 ## Dependencies
 Django
+Build your apps using this [app template](https://github.com/TimeNovaData/django_app_modelo).
 
 ## Installation
 ```shell
@@ -38,13 +39,12 @@ INSTALLED_APPS = [
 - Creation the templates (delete, detail, form and list).
 - Creation the serializer.
 - Creation the views (create, delete, detail, list and update).
-<!-- - Creation of paths present in urls.py. -->
 - Creation the viewsets.
 - Creation the init files.
 
 ## Recommendations
-Build your apps using this [app template](https://github.com/TimeNovaData/django_app_modelo).
-
+Do not make your init files with strings, the package will not find your models.
+Make a single file for each class, and import them in the init file.
 
 ## Getting start
 Create a .vscode file at the root of your project, then add a file called "django_full_crud.json". 

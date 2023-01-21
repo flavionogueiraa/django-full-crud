@@ -86,6 +86,7 @@ django_full_crud/utils/check_and_create_folders.py
 django_full_crud/utils/get_class_info.py
 django_full_crud/utils/get_init_list.py
 django_full_crud/utils/get_modules.py
+django_full_crud/utils/get_prop.py
 django_full_crud/utils/replaced_module.py
 django_full_crud/utils/snake_to_camel_case.py
 django_full_crud/utils/snake_to_kebab_case.py
@@ -96,6 +97,7 @@ django_full_crud/utils/__pycache__/check_and_create_folders.cpython-310.pyc
 django_full_crud/utils/__pycache__/get_class_info.cpython-310.pyc
 django_full_crud/utils/__pycache__/get_init_list.cpython-310.pyc
 django_full_crud/utils/__pycache__/get_modules.cpython-310.pyc
+django_full_crud/utils/__pycache__/get_prop.cpython-310.pyc
 django_full_crud/utils/__pycache__/replaced_module.cpython-310.pyc
 django_full_crud/utils/__pycache__/snake_to_camel_case.cpython-310.pyc
 django_full_crud/utils/__pycache__/snake_to_kebab_case.cpython-310.pyc
