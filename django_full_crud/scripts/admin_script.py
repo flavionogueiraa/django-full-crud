@@ -54,4 +54,4 @@ class {model_name}Admin(admin.ModelAdmin):
 
 
 def default_join(list):
-    return "\n       ".join(list)
+    return "\n        ".join(list)
