@@ -112,6 +112,7 @@ def get_class_function_name(module):
     except PermissionError:
         return ""
 
+
 def starts_with_class_or_def(string):
     return string.startswith("class ") or string.startswith("def ")
 
