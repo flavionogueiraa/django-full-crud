@@ -20,38 +20,38 @@ from ..models import {model_name}
 
 @admin.register({model_name})
 class {model_name}Admin(admin.ModelAdmin):
-	list_display = [
-		{default_join(list_display)}
-	]
+    list_display = [
+        {default_join(list_display)}
+    ]
 
-	search_fields = [
-		{default_join(search_fields)}
-	]
+    search_fields = [
+        {default_join(search_fields)}
+    ]
 """
 
     if list_filter:
         script += f"""
-	list_filter = [
-		{default_join(list_filter)}
-	]
+    list_filter = [
+        {default_join(list_filter)}
+    ]
 """
 
     if autocomplete_fields:
         script += f"""
-	autocomplete_fields = [
-		{default_join(autocomplete_fields)}
-	]
+    autocomplete_fields = [
+        {default_join(autocomplete_fields)}
+    ]
 """
 
     if filter_horizontal:
         script += f"""
-	filter_horizontal = [
-		{default_join(filter_horizontal)}
-	]
+    filter_horizontal = [
+        {default_join(filter_horizontal)}
+    ]
 """
 
     return script
 
 
 def default_join(list):
-    return "\n\t\t".join(list)
+    return "\n       ".join(list)
