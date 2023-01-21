@@ -79,7 +79,7 @@ def to_kebab_case(string):
 
 
 def as_view_or_not(string):
-    if string[0].isupper():
+    if string and string[0].isupper():
         return ".as_view()"
     return ""
 

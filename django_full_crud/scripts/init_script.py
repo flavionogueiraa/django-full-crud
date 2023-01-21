@@ -16,7 +16,7 @@ def init_script(app_name, folder):
     return script
 
 def get_only_files(init_list):
-    return list(filter(lambda init: not init["folder"], init_list))
+    return list(filter(lambda init: not init["folder"] and init["class_function_name"], init_list))
 
 def get_only_folders(init_list):
     return list(filter(lambda init: init["folder"], init_list))
