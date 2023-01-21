@@ -4,6 +4,8 @@ from django_full_crud.utils import get_prop
 
 
 def serializer_script(app_name, snake_model_name, model_name):
+    script = write_default_imports(app_name, model_name)
+
     module = import_module(f"{app_name}.models.{snake_model_name}")
     class_object = getattr(module, f"{model_name}")
 
@@ -32,6 +34,13 @@ def serializer_script(app_name, snake_model_name, model_name):
         ).data"""
         )
 
+    if serializers_import:
+        script += "".join(serializers_import)
+
+    script += (
+        f"\n\nclass {model_name}Serializer(serializers.ModelSerializer):\n    "
+    )
+
     properties = list(class_object._meta._property_names)
     properties.remove("pk")
 
@@ -43,27 +52,26 @@ def serializer_script(app_name, snake_model_name, model_name):
     else:
         only_custom_properties = []
 
-    return f"""from rest_framework import serializers
+    if only_custom_properties:
+        script += default_join(only_custom_properties)
+        script += "\n    "
 
-from {app_name}.models import {model_name}
-{"".join(serializers_import)}
-
-
-class {model_name}Serializer(serializers.ModelSerializer):
-    {default_join(only_custom_properties)}
-    def to_representation(self, instance):
+    if foreign_keys_serializers:
+        script += f"""def to_representation(self, instance):
         default_return = super(
             {model_name}Serializer,
             self,
         ).to_representation(instance)
 
         {second_join(foreign_keys_serializers)}
-        return default_return
+        return default_return\n\n    """
 
-    class Meta:
+    script += f"""class Meta:
         model = {model_name}
         fields = "__all__"
 """
+
+    return script
 
 
 def default_join(list):
@@ -72,3 +80,9 @@ def default_join(list):
 
 def second_join(list):
     return "\n\n        ".join(list) + "\n" if list else ""
+
+
+def write_default_imports(app_name, model_name):
+    return f"""from rest_framework import serializers
+
+from {app_name}.models import {model_name}\n"""
