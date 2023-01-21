@@ -23,9 +23,14 @@ def serializer_script(app_name, snake_model_name, model_name):
         ).field.related_model.__name__
 
         serializers_import.append(
-            f"from {app}.serializers import {model}Serializer"
+            f"from {app}.serializers import {model}Serializer\n"
         )
-        foreign_keys_serializers.append(f"{foreign_key} = {model}Serializer()")
+
+        foreign_keys_serializers.append(
+            f"""default_return["{foreign_key}"] = {model}Serializer(
+            instance.{foreign_key}
+        ).data"""
+        )
 
     properties = list(class_object._meta._property_names)
     properties.remove("pk")
@@ -46,7 +51,15 @@ from {app_name}.models import {model_name}
 
 class {model_name}Serializer(serializers.ModelSerializer):
     {default_join(only_custom_properties)}
-    {default_join(foreign_keys_serializers)}
+    def to_representation(self, instance):
+        default_return = super(
+            {model_name}Serializer,
+            self,
+        ).to_representation(instance)
+
+        {second_join(foreign_keys_serializers)}
+        return default_return
+
     class Meta:
         model = {model_name}
         fields = "__all__"
@@ -55,3 +68,7 @@ class {model_name}Serializer(serializers.ModelSerializer):
 
 def default_join(list):
     return "\n\n    ".join(list) + "\n" if list else ""
+
+
+def second_join(list):
+    return "\n\n        ".join(list) + "\n" if list else ""
