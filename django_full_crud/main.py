@@ -86,18 +86,23 @@ def execute(app_name, models):
             f"{get_project_dir(app_name)}/models/{snake_model_name}.py"
         )
 
-        if not model_exists:
-            raise (Exception(f"A model {model} não existente"))
+        if model_exists:
 
-        check_and_create_folders(app_name, snake_model_name)
+            check_and_create_folders(app_name, snake_model_name)
 
-        create_admin_files(app_name, snake_model_name, model)
-        create_forms_files(app_name, snake_model_name, model)
-        create_serializers_files(app_name, snake_model_name, model)
-        create_templates_files(app_name, snake_model_name, model)
-        create_views_files(app_name, snake_model_name, model)
-        create_viewsets_files(app_name, snake_model_name, model)
-        create_urls_files(app_name)
+            create_admin_files(app_name, snake_model_name, model)
+            create_forms_files(app_name, snake_model_name, model)
+            create_serializers_files(app_name, snake_model_name, model)
+            create_templates_files(app_name, snake_model_name, model)
+            create_views_files(app_name, snake_model_name, model)
+            create_viewsets_files(app_name, snake_model_name, model)
+            create_urls_files(app_name)
+        else:
+            print(
+                Exception(
+                    f"A model {model} não foi encontrada, verifique a ortografia da mesma, além do diretório de pastas"  # noqa E501
+                )
+            )
 
 
 def full_crud(app_name=None, model_name=None):
