@@ -54,4 +54,4 @@ class {model_name}Serializer(serializers.ModelSerializer):
 
 
 def default_join(list):
-    return "\n\n\t".join(list) + "\n" if list else ""
+    return "\n\n    ".join(list) + "\n" if list else ""
