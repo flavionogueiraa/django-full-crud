@@ -40,6 +40,7 @@ django_full_crud/scripts/detail_view_script.py
 django_full_crud/scripts/form_script.py
 django_full_crud/scripts/form_template_script.py
 django_full_crud/scripts/full_init_script.py
+django_full_crud/scripts/full_serializer_script.py
 django_full_crud/scripts/init_script.py
 django_full_crud/scripts/init_view_script.py
 django_full_crud/scripts/list_template_script.py
