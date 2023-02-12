@@ -6,7 +6,7 @@ def create_viewsets_files(app_name, snake_model_name, model_name):
     if get_django_full_crud_json("make_viewsets"):
         print("Creating viewset files...")
 
-        viewset_script = scripts.viewset_script(app_name, model_name)
+        viewset_script = scripts.viewset_script(app_name, model_name, snake_model_name)
         with open(f"{get_project_dir(app_name)}/viewsets/{snake_model_name}_viewset.py", "w", encoding="utf-8") as viewset:
             viewset.write(viewset_script)
 

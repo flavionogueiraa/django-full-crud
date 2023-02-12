@@ -1,4 +1,5 @@
 props_dict = {
+    # Admin props
     "list_display": [
         "BigAutoField",
         "BooleanField",
@@ -31,7 +32,15 @@ props_dict = {
     "filter_horizontal": [
         "ManyToManyField",
     ],
+    # Generic props
     "foreign_keys": [
+        "ForeignKey",
+    ],
+    # Viewset props
+    "filterset_fields": [
+        "BooleanField",
+        "DateField",
+        "DateTimeField",
         "ForeignKey",
     ],
 }
