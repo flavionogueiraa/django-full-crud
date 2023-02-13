@@ -9,8 +9,10 @@ def viewset_script(app_name, model_name, snake_model_name):
 
     search_fields = get_prop(class_object, "search_fields")
     filterset_fields = get_prop(class_object, "filterset_fields")
+    ordering_fields = get_prop(class_object, "ordering_fields")
 
-    return f"""from rest_framework import filters, viewsets
+    return f"""from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters, viewsets
 from rest_framework.permissions import IsAuthenticated
 
 from ..models import {model_name}
@@ -24,7 +26,11 @@ class {model_name}ViewSet(viewsets.ModelViewSet):
 
     permission_classes = [IsAuthenticated]
 
-    filter_backends = [filters.SearchFilter]
+    filter_backends = [
+        filters.SearchFilter,
+        DjangoFilterBackend,
+        filters.OrderingFilter,
+    ]
 
     search_fields = [
         {default_join(search_fields)}
@@ -35,9 +41,7 @@ class {model_name}ViewSet(viewsets.ModelViewSet):
     ]
 
     ordering_fields = [
-    ]
-
-    search_fields = [
+        {default_join(ordering_fields)}
     ]
 """
 

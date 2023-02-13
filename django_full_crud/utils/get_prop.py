@@ -43,6 +43,17 @@ props_dict = {
         "DateTimeField",
         "ForeignKey",
     ],
+    "ordering_fields": [
+        "BigAutoField",
+        "CharField",
+        "DateField",
+        "DateTimeField",
+        "DecimalField",
+        "IntegerField",
+        "PositiveIntegerField",
+        "BooleanField",
+        "ForeignKey",
+    ],
 }
 
 
