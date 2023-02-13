@@ -60,6 +60,7 @@ django_full_crud/scripts/__pycache__/detail_view_script.cpython-310.pyc
 django_full_crud/scripts/__pycache__/form_script.cpython-310.pyc
 django_full_crud/scripts/__pycache__/form_template_script.cpython-310.pyc
 django_full_crud/scripts/__pycache__/full_init_script.cpython-310.pyc
+django_full_crud/scripts/__pycache__/full_serializer_script.cpython-310.pyc
 django_full_crud/scripts/__pycache__/init_script.cpython-310.pyc
 django_full_crud/scripts/__pycache__/init_view_script.cpython-310.pyc
 django_full_crud/scripts/__pycache__/list_template_script.cpython-310.pyc
