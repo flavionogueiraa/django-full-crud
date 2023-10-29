@@ -1,9 +1,24 @@
+# flake8: noqa
+
 from importlib import import_module
 
+from django_full_crud.globals import get_django_full_crud_json
 from django_full_crud.utils import get_prop
 
 
 def admin_script(app_name, snake_model_name, model_name):
+    simple_admin = get_django_full_crud_json("simple_admin", False)
+    if simple_admin:
+        return f"""from django.contrib import admin
+
+from ..models import {model_name}
+
+
+@admin.register({model_name})
+class {model_name}Admin({get_django_full_crud_json("admin_superclass", "admin.ModelAdmin")}):
+    ...
+"""
+
     module = import_module(f"{app_name}.models.{snake_model_name}")
     class_object = getattr(module, f"{model_name}")
 
@@ -19,7 +34,7 @@ from ..models import {model_name}
 
 
 @admin.register({model_name})
-class {model_name}Admin(admin.ModelAdmin):
+class {model_name}Admin({get_django_full_crud_json("admin_superclass", "admin.ModelAdmin")}):
     list_display = [
         {default_join(list_display)}
     ]
