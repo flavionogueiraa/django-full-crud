@@ -10,12 +10,15 @@ def admin_script(app_name, snake_model_name, model_name):
     simple_admin = get_django_full_crud_json("simple_admin", False)
     admin_imports = get_django_full_crud_json("admin_imports", "")
     replaced_admin_imports = [
-        admin_import.replace('"', "") + "\n"
-        for admin_import in admin_imports.split(",")
+        admin_import.replace("'", "") + "\n" for admin_import in admin_imports
     ]
+    print(
+        default_join(replaced_admin_imports),
+        "default_join(replaced_admin_imports)",
+    )
     if simple_admin:
         return f"""from django.contrib import admin
-{replaced_admin_imports}
+{default_join(replaced_admin_imports)}
 from ..models import {model_name}
 
 
