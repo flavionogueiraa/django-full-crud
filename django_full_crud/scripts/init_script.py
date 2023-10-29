@@ -38,11 +38,11 @@ def write_views_lists(script, only_folders):
     return script
 
 def write_all_folders_list(script, only_files, only_folders):
-    script += "\n__all__ = (\n\t[\n"
+    script += "\n__all__ = (\n    [\n"
 
     for init in only_files:
-        script += make_all_line(init, "\t\t")
-    script += "\t]"
+        script += make_all_line(init, "        ")
+    script += "    ]"
 
     for init in only_folders:
         script += make_folder_line(init)
@@ -55,7 +55,7 @@ def write_all_files_list(script, only_files):
     script += "__all__ = [\n"
 
     for init in only_files:
-        script += make_all_line(init, "\t")
+        script += make_all_line(init, "    ")
     script += "]\n"
 
     return script
@@ -75,7 +75,7 @@ def make_full_import_line(init_object):
         f"""from .{archive_name} import (
     """
         + default_join(childrens)
-        + """,
+        + """u
 )\n"""
     )
 
@@ -86,11 +86,11 @@ def make_all_line(init_object, tabs):
 
 
 def make_folder_line(init_object):
-    return f"\n\t+ {init_object['archive_name']}_views"
+    return f"\n    + {init_object['archive_name']}_views"
 
 
 def default_join(list):
-    return ",\n\t".join(list)
+    return ",\n    ".join(list)
 
 
 def make_views_line(init_object):

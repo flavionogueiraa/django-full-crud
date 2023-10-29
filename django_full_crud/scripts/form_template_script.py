@@ -21,4 +21,4 @@ def make_field(field):
 
 
 def default_join(list):
-    return "\n\t\t".join(list)
+    return "\n        ".join(list)

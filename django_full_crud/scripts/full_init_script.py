@@ -10,7 +10,7 @@ def full_init_script(app_name, folder_name):
     for init in init_list:
         script += make_views_line(init)
 
-    script += "\n__all__ = (\n\t[]\n"
+    script += "\n__all__ = (\n    []\n"
     for init in init_list:
         script += make_all_line(init)
     script += ")\n"
@@ -45,4 +45,4 @@ def make_views_line(init_object):
 
 def make_all_line(init_object):
     archive_name = init_object["archive_name"]
-    return f"\t+ {archive_name}_views\n"
+    return f"    + {archive_name}_views\n"
