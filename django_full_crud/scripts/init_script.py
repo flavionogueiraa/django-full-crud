@@ -75,7 +75,7 @@ def make_full_import_line(init_object):
         f"""from .{archive_name} import (
     """
         + default_join(childrens)
-        + """u
+        + """,
 )\n"""
     )
 

@@ -6,7 +6,7 @@ def full_init_script(app_name, folder_name):
     script = ""
     for init in init_list:
         script += make_import_line(init)
-    
+
     for init in init_list:
         script += make_views_line(init)
 

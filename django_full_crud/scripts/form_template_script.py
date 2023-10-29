@@ -17,7 +17,7 @@ def form_template_script(class_info):
 
 
 def make_field(field):
-    return "<label for='{{form." + field + ".id_for_label}}'>{{form." + field + ".label}}</label>\n{{form." + field + "}}"
+    return "<label for='{{form." + field + ".id_for_label}}'>{{form." + field + ".label}}</label>\n        {{form." + field + "}}"
 
 
 def default_join(list):

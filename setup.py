@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as file:
 
 setup(
     name="django_full_crud",
-    version="0.2.9.3",
+    version="0.2.9.5",
     url="https://github.com/flaviotech/django-full-crud/",
     license="MIT License",
     author="Flávio Silva",
