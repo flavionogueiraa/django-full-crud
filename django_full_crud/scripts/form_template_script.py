@@ -1,3 +1,4 @@
+# flake8: noqa
 def form_template_script(class_info):
     fields = list(map(make_field, class_info["form_fields"]))
 
@@ -15,7 +16,7 @@ def form_template_script(class_info):
 
 
 def make_field(field):
-    return "{{form." + field + "}}"
+    return "<label for='{{form." + field + ".id_for_label}}'>{{form." + field + ".label}}</label>\n{{form." + field + "}}"
 
 
 def default_join(list):
