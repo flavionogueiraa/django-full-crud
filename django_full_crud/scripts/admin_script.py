@@ -1,5 +1,4 @@
 # flake8: noqa
-
 from importlib import import_module
 
 from django_full_crud.globals import get_django_full_crud_json
@@ -12,10 +11,6 @@ def admin_script(app_name, snake_model_name, model_name):
     replaced_admin_imports = [
         admin_import.replace("'", "") + "\n" for admin_import in admin_imports
     ]
-    print(
-        default_join(replaced_admin_imports),
-        "default_join(replaced_admin_imports)",
-    )
     if simple_admin:
         return f"""from django.contrib import admin
 {default_join(replaced_admin_imports)}
