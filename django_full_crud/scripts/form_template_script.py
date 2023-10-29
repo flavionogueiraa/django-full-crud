@@ -7,6 +7,7 @@ def form_template_script(class_info):
 {% block content %}
     <form method="post">
         {% csrf_token %}
+        <div>{{form.errors}}</div>
         """ + default_join(fields) + """
         <a href="javascript:window.history.back();">Cancelar</a>
         <button type="submit">Salvar</button>
