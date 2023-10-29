@@ -1,53 +1,6 @@
 from importlib import import_module
 
-props_dict = {
-    "list_display": [
-        "BigAutoField",
-        "BooleanField",
-        "CharField",
-        "DateField",
-        "DateTimeField",
-        "DecimalField",
-        "ForeignKey",
-        "IntegerField",
-        "PositiveIntegerField",
-    ],
-    "search_fields": [
-        "BigAutoField",
-        "CharField",
-        "DateField",
-        "DateTimeField",
-        "DecimalField",
-        "IntegerField",
-        "PositiveIntegerField",
-    ],
-    "list_filter": [
-        "BooleanField",
-        "DateField",
-        "DateTimeField",
-        "ForeignKey",
-    ],
-    "autocomplete_fields": [
-        "ForeignKey",
-    ],
-    "filter_horizontal": [
-        "ManyToManyField",
-    ],
-}
-
-
-def get_prop(model, prop):
-    props = []
-    fields = model._meta.get_fields()
-    for field in fields:
-        field_type = field.get_internal_type()
-        is_original_field = not hasattr(field, "field")
-
-        if field_type in props_dict[prop] and is_original_field:
-            field_str = f'"{field.name}",'
-            props.append(field_str)
-
-    return props
+from django_full_crud.utils import get_prop
 
 
 def admin_script(app_name, snake_model_name, model_name):
@@ -96,9 +49,9 @@ class {model_name}Admin(admin.ModelAdmin):
         {default_join(filter_horizontal)}
     ]
 """
-    
+
     return script
 
 
 def default_join(list):
-    return "\n\t\t".join(list)
+    return "\n        ".join(list)

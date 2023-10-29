@@ -15,8 +15,7 @@ from django_full_crud.globals import (
 )
 from django_full_crud.serializers.main import create_serializers_files
 from django_full_crud.templates.main import create_templates_files
-
-# from django_full_crud.urls.main import create_urls_files
+from django_full_crud.urls.main import create_urls_files
 from django_full_crud.utils import (
     camel_to_snake_case,
     check_and_create_folders,
@@ -80,40 +79,47 @@ def search_models_folder(module):
 
 def execute(app_name, models):
     for model in models:
+        print("\n========================================")
+        print(f"CRUD of {app_name}.{model}:")
         snake_model_name = camel_to_snake_case(model)
         model_exists = os.path.exists(
             f"{get_project_dir(app_name)}/models/{snake_model_name}.py"
         )
 
-        if not model_exists:
-            raise (Exception(f"A model {model} não existente"))
+        if model_exists:
 
-        check_and_create_folders(app_name, snake_model_name)
+            check_and_create_folders(app_name, snake_model_name)
 
-        create_admin_files(app_name, snake_model_name, model)
-        create_forms_files(app_name, snake_model_name, model)
-        create_serializers_files(app_name, snake_model_name, model)
-        create_templates_files(app_name, snake_model_name, model)
-        create_views_files(app_name, snake_model_name, model)
-        create_viewsets_files(app_name, snake_model_name, model)
+            create_admin_files(app_name, snake_model_name, model)
+            create_forms_files(app_name, snake_model_name, model)
+            create_serializers_files(app_name, snake_model_name, model)
+            create_templates_files(app_name, snake_model_name, model)
+            create_views_files(app_name, snake_model_name, model)
+            create_viewsets_files(app_name, snake_model_name, model)
+            create_urls_files(app_name)
+        else:
+            print(
+                Exception(
+                    f"A model {model} não foi encontrada, verifique a ortografia da mesma, além do diretório de pastas"  # noqa E501
+                )
+            )
 
 
 def full_crud(app_name=None, model_name=None):
+    print("Starting django-full-crud...")
     make_initial_configs()
 
     if model_name:
+        print("Executing only one model...")
         models = [model_name]
         execute(app_name, models)
-        # Disabled in 10/12/2022.
-        # É muito específico, então a chance de usarmos é baixa
-        # create_urls_files(app_name)
     elif app_name:
+        print("Executing only one app...")
         models = get_app_models(app_name)
+
         execute(app_name, models)
-        # Disabled in 10/12/2022.
-        # É muito específico, então a chance de usarmos é baixa
-        # create_urls_files(app_name)
     else:
+        print("Executing all project...")
         modules = get_modules(get_project_dir())
         only_folders = get_only_folders(modules)
         only_apps = get_only_apps(only_folders)
@@ -127,26 +133,5 @@ def full_crud(app_name=None, model_name=None):
 
             this_app = module["module_name"]
             execute(this_app, models_name)
-            # Disabled in 10/12/2022.
-            # É muito específico, então a chance de usarmos é baixa
-            # create_urls_files(this_app)
 
-
-functions = {
-    "full_crud": full_crud,
-}
-
-function = sys.argv[1]
-
-try:
-    app = sys.argv[2]
-except:
-    app = None
-
-try:
-    model = sys.argv[3]
-except:
-    model = None
-
-executable = functions[function]
-executable(app, model)
+    print("\nFinished django-full-crud!")

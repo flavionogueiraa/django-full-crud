@@ -40,6 +40,7 @@ django_full_crud/scripts/detail_view_script.py
 django_full_crud/scripts/form_script.py
 django_full_crud/scripts/form_template_script.py
 django_full_crud/scripts/full_init_script.py
+django_full_crud/scripts/full_serializer_script.py
 django_full_crud/scripts/init_script.py
 django_full_crud/scripts/init_view_script.py
 django_full_crud/scripts/list_template_script.py
@@ -59,6 +60,7 @@ django_full_crud/scripts/__pycache__/detail_view_script.cpython-310.pyc
 django_full_crud/scripts/__pycache__/form_script.cpython-310.pyc
 django_full_crud/scripts/__pycache__/form_template_script.cpython-310.pyc
 django_full_crud/scripts/__pycache__/full_init_script.cpython-310.pyc
+django_full_crud/scripts/__pycache__/full_serializer_script.cpython-310.pyc
 django_full_crud/scripts/__pycache__/init_script.cpython-310.pyc
 django_full_crud/scripts/__pycache__/init_view_script.cpython-310.pyc
 django_full_crud/scripts/__pycache__/list_template_script.cpython-310.pyc
@@ -86,6 +88,7 @@ django_full_crud/utils/check_and_create_folders.py
 django_full_crud/utils/get_class_info.py
 django_full_crud/utils/get_init_list.py
 django_full_crud/utils/get_modules.py
+django_full_crud/utils/get_prop.py
 django_full_crud/utils/replaced_module.py
 django_full_crud/utils/snake_to_camel_case.py
 django_full_crud/utils/snake_to_kebab_case.py
@@ -96,6 +99,7 @@ django_full_crud/utils/__pycache__/check_and_create_folders.cpython-310.pyc
 django_full_crud/utils/__pycache__/get_class_info.cpython-310.pyc
 django_full_crud/utils/__pycache__/get_init_list.cpython-310.pyc
 django_full_crud/utils/__pycache__/get_modules.cpython-310.pyc
+django_full_crud/utils/__pycache__/get_prop.cpython-310.pyc
 django_full_crud/utils/__pycache__/replaced_module.cpython-310.pyc
 django_full_crud/utils/__pycache__/snake_to_camel_case.cpython-310.pyc
 django_full_crud/utils/__pycache__/snake_to_kebab_case.cpython-310.pyc
