@@ -35,4 +35,4 @@ def make_td(field):
 
 
 def default_join(list):
-    return "\n\t\t\t\t\t".join(list)
+    return "\n                    ".join(list)

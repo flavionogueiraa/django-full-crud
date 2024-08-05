@@ -11,11 +11,11 @@ def urls_script(app_name, init_list, viewset_init_list):
     script = write_imports_and_app_router(app_name)
     script = write_routers(script, app_name, viewset_only_files)
     script = write_folder_pattenrs(script, view_only_folders)
-    script += f"""urlpatterns = (\n\t[
+    script += f"""urlpatterns = (\n    [
         path("api/", include({app_name}_router.urls)),"""
 
     script = write_files_path(script, view_only_files)
-    script += "\n\t]"
+    script += "\n    ]"
 
     script = write_sum_folders_patterns(script, view_only_folders)
     script += "\n)\n"
@@ -35,7 +35,7 @@ from {app_name} import views, viewsets
 
 def write_sum_folders_patterns(script, view_only_folders):
     for folder in view_only_folders:
-        script += f"\n\t+ {folder['class_function_name']}_patterns"
+        script += f"\n    + {folder['class_function_name']}_patterns"
     return script
 
 
@@ -44,7 +44,7 @@ def write_files_path(script, view_only_files):
         name = file["class_function_name"]
         kebab_case = to_kebab_case(name)
         snake_case = utils.camel_to_snake_case(name)
-        script += f"""\n\t\tpath("{kebab_case}/{param_or_not(file)}", views.{name}{as_view_or_not(name)}, name="{snake_case}"),"""
+        script += f"""\n        path("{kebab_case}/{param_or_not(file)}", views.{name}{as_view_or_not(name)}, name="{snake_case}"),"""
     return script
 
 
@@ -67,7 +67,7 @@ def write_folder_pattenrs(script, view_only_folders):
 
             kebab_case = to_kebab_case(children_name)
             snake_case = utils.camel_to_snake_case(children_name)
-            script += f"""\n\tpath("{kebab_case}/{param_or_not(children)}", views.{children_name}{as_view_or_not(children_name)}, name="{snake_case}"),"""
+            script += f"""\n    path("{kebab_case}/{param_or_not(children)}", views.{children_name}{as_view_or_not(children_name)}, name="{snake_case}"),"""
         script += "\n]\n\n"
     return script
 

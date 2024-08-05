@@ -103,14 +103,13 @@ def get_class_function_name(module):
         return replaced_module(module["module"])
 
     path = module["module"]
-    try:
-        with open(path, "r", encoding="utf-8") as file:
-            lines = file.readlines()
-            right_line = list(filter(starts_with_class_or_def, lines))[0]
-            class_function_name = make_splits_line(right_line)
-            return class_function_name
-    except PermissionError:
-        return ""
+    with open(path, "r", encoding="utf-8") as file:
+        lines = file.readlines()
+
+        def_or_class = list(filter(starts_with_class_or_def, lines))
+        right_line = def_or_class[0] if def_or_class else ""
+        class_function_name = make_splits_line(right_line)
+        return class_function_name
 
 
 def starts_with_class_or_def(string):
@@ -118,4 +117,8 @@ def starts_with_class_or_def(string):
 
 
 def make_splits_line(line):
-    return line.split("(")[0].split()[-1]
+    class_or_def_part = line.split("(")[0]
+    if class_or_def_part:
+        only_name_part = class_or_def_part.split()[-1]
+        return only_name_part
+    return ""
